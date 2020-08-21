@@ -1,8 +1,28 @@
 # Last.FM 1K User Dataset
 
-This repository hosts the [Last.fm Dataset - 1K users](http://ocelma.net/MusicRecommendationDataset/lastfm-1K.html) under the same license and terms in the offical README, copied for convenience below.
+This repository hosts the [Last.fm Dataset - 1K users](http://ocelma.net/MusicRecommendationDataset/lastfm-1K.html) under the same license and terms as in the offical README, copied for convenience below.
 
 The dataset has been preprocessed and hosted for easier use in the standard PyData set of tools. In addition, an educational/developer friendly subset is hosted for quality assurance tasks and experimentation. See the releases section of this repository to download.
+
+**Release Files**
+* `userid-timestamp-artid-artname-traid-traname.tsv.zip` (original ~1,000 user level event dataset from `lastfm-dataset-1K.tar.gz`)
+* `userid-profile.tsv.zip` (original ~10,00 user profile dataset from `lastfm-dataset-1K.tar.gz`)
+* `README.txt` (original README from `lastfm-dataset-1K.tar.gz`, see below as well)
+* `lastfm-dataset-1k.snappy.parquet` (processed `userid-timestamp-artid-artname-traid-traname.tsv.zip`)
+* `lastfm-dataset-50.snappy.parquet` (processed `userid-timestamp-artid-artname-traid-traname.tsv.zip` with 50 users sampled)
+
+## Preprocessing
+
+The preprocessing done in the `preprocessing.ipynb` notebook consisted of the following steps.
+  1. Load `userid-timestamp-artid-artname-traid-traname.tsv.zip` as a pandas `Dataframe`
+  2. Remove malformed rows
+  3. Convert `timestamp` string to a proper UTC datetime object
+  4. Sort records by *user_id* and *timestamp*
+  5. Save original and sampled dataset as single snappy compressed parquet files.
+
+The column headers were renamed to be *user_id*, *timestamp*, *artist_id*, *artist_name*, *track_id*, *track_name*.
+
+---
 
 ## README
 *Version 1.0, May 2010*
@@ -12,7 +32,7 @@ The dataset has been preprocessed and hosted for easier use in the standard PyDa
 This dataset contains *user*, *timestamp*, *artist*, *song* tuples collected from <a href="http://www.last.fm/api">Last.fm API</a>, 
 using the <a href="http://www.last.fm/api/show?service=278">user.getRecentTracks()</a> method.
 
-This dataset represents the whole listening habits (till May, 5th 2009) for nearly **1,000** users.
+This dataset represents the whole listening habits (till May, 5th 2009) for nearly 1,000 users.
 
 ### Files
 
