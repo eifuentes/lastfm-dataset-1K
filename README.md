@@ -30,7 +30,7 @@ The column headers were renamed to be *user_id*, *timestamp*, *artist_id*, *arti
 ### What is this?
 
 This dataset contains *user*, *timestamp*, *artist*, *song* tuples collected from <a href="http://www.last.fm/api">Last.fm API</a>, 
-using the <a href="http://www.last.fm/api/show?service=278">user.getRecentTracks()</a> method.
+using the <a href="https://www.last.fm/api/show/user.getRecentTracks">user.getRecentTracks()</a> method.
 
 This dataset represents the whole listening habits (till May, 5th 2009) for nearly 1,000 users.
 
